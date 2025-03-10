@@ -2,7 +2,7 @@
 *.out
 *.exe
 *.dll
-
+dist
 build/
 
 *~

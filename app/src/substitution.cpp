@@ -27,4 +27,5 @@ string decryptSubstitution(const string& input){
             output += c;
         }
     }
+    return output;
 }

@@ -1,25 +1,32 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -O2
 
-# Define output directory
 OUTDIR = dist
 
 SRC = src/main.cpp src/substitution.cpp src/transposition.cpp
-# Put object files in output directory
 OBJ = $(patsubst %.cpp,$(OUTDIR)/%.o,$(SRC))
 BIN = $(OUTDIR)/app
 
-all: $(BIN)
+.SILENT:
 
-# Rule for object files - ensures directories are created
+all: 
+	echo "Building app..."
+	$(MAKE) $(BIN)
+
 $(OUTDIR)/%.o: %.cpp
-    @mkdir -p $(@D)
-    $(CXX) $(CXXFLAGS) -I include -c $< -o $@
+	echo "Compiling $<..."
+	mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -I include -c $< -o $@
 
-# Link rule
 $(BIN): $(OBJ)
-    @mkdir -p $(@D)
-    $(CXX) $(CXXFLAGS) -o $(BIN) $(OBJ)
+	echo "Linking exe $(BIN)..."
+	mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -o $(BIN) $(OBJ)
+	echo "Build finished succesfully!"
 
 clean:
-    rm -rf $(OUTDIR)
+	echo "Deleting dir $(OUTDIR)..."
+	rm -rf $(OUTDIR)
+	echo "Succesfully cleaned !"
+
+.PHONY: all clean
