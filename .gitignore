@@ -1,0 +1,14 @@
+*.o
+*.out
+app
+/app
+*.exe
+*.dll
+
+build/
+
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
