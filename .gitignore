@@ -1,7 +1,5 @@
 *.o
 *.out
-app
-/app
 *.exe
 *.dll
 
